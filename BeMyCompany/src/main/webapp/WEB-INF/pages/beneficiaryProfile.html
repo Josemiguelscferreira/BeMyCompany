@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beneficiary Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Global Styling */
+    body {
+      background-image: url("https://i.ibb.co/4mhxkTS/BG-1-enhanced.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Navigation Bar Styling */
+    nav {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 15px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav .navbar-brand {
+      color: #fff;
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-left: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      margin-right: 20px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 500;
+      margin-left: 10px;
+    }
+
+    nav a:hover {
+      color: #FF4081;
+    }
+
+    /* Main Content Styling */
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 50px;
+      /* Adds space at the top */
+    }
+
+    /* Left section for scheduled activities */
+    .scheduled-activities {
+      flex: 1;
+      padding-right: 40px;
+      padding-left: 40px;
+      border-right: 3px solid #ddd;
+      /* Adds a clear separation between the two sections */
+      margin-right: 40px;
+      /* Add extra space to the right */
+    }
+
+    /* Image section */
+    .schedule-image {
+      max-width: 400px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 50px;
+      /* Adds more space above the image */
+      margin-left: 40px;
+      /* Adds space to the left */
+    }
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+
+    /* Description section below the image */
+    .image-description {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .image-description p {
+      margin: 5px 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    h2 {
+      color: #333;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    #scheduled-items p {
+      text-align: center;
+      font-size: 18px;
+      color: #777;
+    }
+
+    /* Scheduled Item Styling */
+    .schedule-item {
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      margin: 20px 0;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: 0.3s ease-in-out;
+    }
+
+    .schedule-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .schedule-item img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ddd;
+    }
+
+    .schedule-item div {
+      flex: 1;
+      padding-left: 20px;
+    }
+
+    .schedule-item button {
+      margin-left: 400px;
+      background-color: #de1717;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 8px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .schedule-item button:hover {
+      background-color: #ca2929;
+    }
+
+    /* Schedule Button Styling */
+    .btn-primary {
+      background-color: #12BD48;
+      border: none;
+      padding: 12px 30px;
+      font-size: 16px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover {
+      background-color: #2AE195;
+    }
+
+    .dropdown {
+      position: absolute;
+      margin-left: 1830px;
+      margin-top: 50px;
+      top: 15px;
+    }
+
+    .dropdown-btn {
+      background-color: #F0F0F0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+      margin-top: 10px;
+      border: none;
+      padding: 10px;
+      border-radius: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .dropdown-btn:hover {
+      background-color: blue;
+      color: white;
+    }
+
+    .dropdown-btn img {
+      width: 30px;
+      height: 30px;
+      margin-left: 8px;
+      margin-right: 8px;
+      border-radius: 50%;
+    }
+
+    .dropdown-content {
+      display: none;
+      background-color: #fff;
+      min-width: 150px;
+      margin-left: -80px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+      border-radius: 5px;
+    }
+
+    .dropdown-content a {
+      color: #333;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: blue;
+      color: white;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #FF4081;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .scheduled-activities {
+        padding-right: 0;
+        padding-left: 0;
+        text-align: center;
+        border-right: none;
+        /* Remove the border on smaller screens */
+        margin-right: 0;
+        /* Remove right margin */
+      }
+
+      .schedule-image {
+        max-width: 100%;
+        margin-top: 30px;
+        /* Reduces top margin on smaller screens */
+        margin-left: 0;
+      }
+    }
+    #chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 400px;
+            height: 600px;
+            background: #fff;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        #chatbot-header {
+            background: #12bd48;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            font-size: 18px;
+        }
+
+        #chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            border-top: 1px solid #eee;
+        }
+
+        .message {
+            margin-bottom: 15px;
+        }
+
+        .user-message {
+            text-align: right;
+        }
+
+        .bot-message {
+            text-align: left;
+            color: #6a11cb;
+        }
+
+        #chatbot-input {
+            display: flex;
+            border-top: 1px solid #eee;
+        }
+
+        #chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 0 0 0 10px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        #chatbot-input button {
+            background: #12bd48;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 0 0 10px 0;
+        }
+
+        #chatbot-input button:hover {
+            background: #2575fc;
+        }
+
+        #chatbot-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: #ff4d4f;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            margin-bottom: -20px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #chatbot-close:hover {
+            background: #ff7875;
+            transform: scale(1.1);
+        }
+
+        #chatbot-toggle {
+            margin-bottom: 70px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #12bd48;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+
+        #chatbot-toggle:hover {
+            background: #2575fc;
+        }
+
+
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">BeMyCompany</a>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="home.html">Home</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="#">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dropdown Button for User Profile -->
+  <div class="dropdown">
+    <button class="dropdown-btn">
+      <img
+        src="https://e7.pngegg.com/pngimages/841/727/png-clipart-computer-icons-user-profile-synonyms-and-antonyms-android-android-computer-wallpaper-monochrome-thumbnail.png"
+        alt="User Icon">
+    </button>
+    <div class="dropdown-content">
+      <a href="index.html">Edit</a>
+      <a href="newPage.html">Schedule</a>
+      <a href="#">Log Out</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Left section for activities -->
+    <div class="scheduled-activities">
+      <h2>Scheduled Activities</h2>
+      <div id="scheduled-items">
+        <p>No activities scheduled yet.</p>
+      </div>
+      <a href="beneficiarySchedule.html" class="btn btn-primary">Schedule New Activity</a>
+    </div>
+
+    <!-- Right section for image and description -->
+    <div class="schedule-image">
+      <img src="https://i.ibb.co/55vvfdz/beneficiary-man-1.png" alt="Scheduled Activity Image">
+      <div class="image-description">
+        <p><strong>Name:</strong> Osvaldo Cruz </p>
+        <p><strong>Age:</strong> 82 </p>
+        <p><strong>Location:</strong> Lisboa </p>
+        <p><strong>Interests:</strong> Domino, Cooking, Football, Crochet, Cinema </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const scheduledItemsContainer = document.getElementById('scheduled-items');
+
+    // Function to delete a scheduled activity
+    function deleteScheduled(index) {
+      const activities = JSON.parse(localStorage.getItem('scheduledActivities')) || [];
+      activities.splice(index, 1); // Remove the activity at the given index
+      localStorage.setItem('scheduledActivities', JSON.stringify(activities)); // Update localStorage
+      loadScheduledActivities(); // Reload activities
+    }
+
+    // Load and display scheduled activities
+    function loadScheduledActivities() {
+      const activities = JSON.parse(localStorage.getItem('scheduledActivities')) || [];
+
+      // Clear current contents of scheduled items
+      scheduledItemsContainer.innerHTML = '';
+
+      // List of users (This can be expanded with more users)
+      const users = [
+        {
+          name: "Joana Campos",
+          age: 28,
+          phone: "+1234567890",
+          location: "Lisboa",
+          photo: "https://i.ibb.co/cyKLp5b/volunteer-woman-2.png",
+          commonInterests: "Crochet"
+        },
+        {
+          name: "Mia Ferreira",
+          age: 30,
+          phone: "+1234567891",
+          location: "Lisboa",
+          photo: "https://i.ibb.co/5crktcj/volunteer-woman-3.png",
+          commonInterests: "Domino, Crochet, Cinema"
+        },
+        {
+          name: "Francisco Silva",
+          age: 32,
+          phone: "+1234567892",
+          location: "Lisboa",
+          photo: "https://i.ibb.co/RhhLrMG/volunteer-man-2.png",
+          commonInterests: "Domino, Cooking, Football"
+        },
+        {
+          name: "Roberto Pereira",
+          age: 35,
+          phone: "+1234567893",
+          location: "Lisboa",
+          photo: "https://i.ibb.co/cx9c4zG/volunteer-man-1.png",
+          commonInterests: "Cinema"
+        }
+      ];
+
+      // If there are no activities, display a message
+      if (activities.length === 0) {
+        scheduledItemsContainer.innerHTML = '<p>No activities scheduled yet.</p>';
+      } else {
+        // Loop through each activity and display it
+        activities.forEach((activity, index) => {
+          // Randomly select a user from the list of users
+          const randomUser = users[Math.floor(Math.random() * users.length)];
+
+          const activityDiv = document.createElement('div');
+          activityDiv.classList.add('schedule-item');
+          activityDiv.innerHTML = `
+                <img src="${randomUser.photo}" alt="Volunteer Image">
+                <div>
+                    <p><strong>${activity.weekday}</strong> - <strong>${activity.time}</strong> on <strong>${activity.date}</strong></p>
+                    <p><strong>Volunteer Name: </strong>${randomUser.name}</p>
+                    <p><strong>Volunteer Age: </strong>${randomUser.age}</p>
+                    <p><strong>Common Interests: </strong>${randomUser.commonInterests}</p>
+                    <button onclick="deleteScheduled(${index})">Delete</button>
+                </div>
+            `;
+          scheduledItemsContainer.appendChild(activityDiv);
+        });
+      }
+    }
+
+    // Load activities when the page is loaded
+    loadScheduledActivities();
+c
+    const fakeResponses = {
+        "help": "This is an application to combat loneliness! You can register as a volunteer or an elderly person to spend time with others. For more information, check the 'About' page.",
+        "assistance": "Hello! I'm ChatBot, your virtual assistant. How can I help you today? 😊",
+        "what is your name": "I'm ChatBot Amigo, here to help you connect and combat loneliness.",
+        "bye": "Goodbye! I hope you have a wonderful day. Come back anytime!",
+        "register": "To register, choose whether you are a volunteer or an elderly person. Click the 'Register' button in the main menu.",
+        "login": "To log in, click the 'Login' button and enter your credentials. We're happy to see you again!",
+        "volunteer": "Volunteers are people who want to dedicate some of their time to chatting, playing, or even walking with our registered elderly. Thank you for your generosity!",
+        "elderly": "If you're an elderly person looking for company or a friendly conversation, you're in the right place! Register to meet volunteers willing to help.",
+        "activities": "Our activities include video call conversations, online games, accompanied walks, and much more. All designed to create bonds and pleasant moments!",
+        "how does it work?": "Our system connects volunteers with elderly people who need company. You can create your profile and schedule times to interact. It's simple and safe!",
+        "safety": "Safety is our priority. All volunteers undergo a verification process before connecting with the elderly.",
+        "loneliness": "Loneliness can be difficult, but here you'll find people willing to listen and share good moments with you.",
+        "schedule": "You can schedule a time to chat or participate in activities. Access the user area for more details.",
+        "contact": "If you need more help, contact us through the form on the 'Contact Us' page. We're here for you!"
+    };
+
+    function toggleChatbot() {
+        const chatbot = document.getElementById("chatbot-container");
+        chatbot.style.display = chatbot.style.display === "flex" ? "none" : "flex";
+    }
+
+    function sendMessage() {
+        const userInput = document.getElementById("user-input").value.trim().toLowerCase();
+        if (userInput === "") {
+            return;
+        }
+
+        const messagesDiv = document.getElementById("chatbot-messages");
+        const userMessage = document.createElement("div");
+        userMessage.className = "message user-message";
+        userMessage.textContent = userInput;
+        messagesDiv.appendChild(userMessage);
+
+        const botMessage = document.createElement("div");
+        botMessage.className = "message bot-message";
+        botMessage.textContent = fakeResponses[userInput] || "I'm not sure how to respond to that.";
+        messagesDiv.appendChild(botMessage);
+
+        document.getElementById("user-input").value = "";
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+</script>
+    <button id="chatbot-toggle" onclick="toggleChatbot()">💬</button>
+    <div id="chatbot-container">
+        <button id="chatbot-close" onclick="toggleChatbot()"></button>
+        <div id="chatbot-header">Chatbot</div>
+        <div id="chatbot-messages"></div>
+        <div id="chatbot-input">
+            <input type="text" id="user-input" placeholder="Type a message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 BeMyCompany. All rights reserved. <a href="#">Privacy Policy</a></p>
+  </footer>
+
+</body>
+
+</html>

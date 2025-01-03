@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form - Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="formpage.css" rel="stylesheet" />
+    <style>
+        /* Global Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url("https://i.ibb.co/bbt319h/beautiful.jpg");
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        /* Navigation Bar Styling */
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        nav .navbar-brand {
+            color: #fff;
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        nav a {
+            color: #fff;
+            margin-right: 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            margin-left: 10px
+        }
+        nav a:hover {
+            color: #12bd48;
+        }
+        /* Main Content Styling */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+        }
+        /* Form Styling */
+        .form-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 60px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 700px;
+            /* Increased max-width */
+            margin-top: 20px;
+        }
+        .form-container h2 {
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #333;
+            text-align: center;
+        }
+        .form-control {
+            border: 2px solid #ddd; /* Default light border */
+            border-radius: 50px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            width: 100%; /* Ensure the fields take full width */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus and hover effects */
+        }
+        .form-control:focus {
+            border-color: #12bd48; /* Match the login button border on focus */
+            outline: none;
+            box-shadow: 0 0 5px rgba(18, 189, 72, 0.3);
+        }
+        .form-control:hover {
+            border-color: #2ae195; /* Different color on hover */
+        }
+        .btn-submit {
+            background: #12bd48;
+            /* Match the login button background */
+            color: white;
+            font-size: 18px;
+            padding: 15px 30px;
+            width: 50%;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(18, 189, 72, 0.3);
+        }
+        .btn-submit:hover {
+            background: #2ae195;
+            /* Match the hover effect */
+            transform: translateY(-5px);
+            /* Slight lift effect on hover */
+            box-shadow: 0 10px 20px rgba(43, 201, 141, 0.4);
+            /* Stronger shadow on hover */
+        }
+        .btn-submit:focus {
+            outline: none;
+        }
+        .form-text {
+            color: #333;
+            font-size: 14px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .form-text a {
+            color: #FF4081;
+            text-decoration: none;
+        }
+        .form-text a:hover {
+            color: #FF1E72;
+        }
+        /* Custom File Input Button */
+        .file-input-container {
+            margin-bottom: 15px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers the content horizontally */
+            justify-content: center; /* Centers the content vertically if needed */
+            width: 100%;
+        }
+        .file-input {
+            display: none;
+            /* Hide the default file input */
+        }
+        .file-input-label {
+            background: #4d514f;
+            /* Match the login button background */
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(77, 81, 79, 0.3);
+            width: 70%;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .file-input-label:hover {
+            background: #858685;
+            /* Match the hover effect */
+            transform: translateY(-5px);
+            /* Slight lift effect on hover */
+            box-shadow: 0 10px 20px rgba(113, 134, 133, 0.4);
+            /* Stronger shadow on hover */
+        }
+        .file-input-label:focus {
+            outline: none;
+        }
+        .form-check-input {
+            width: 20px; /* Increase the width */
+            height: 20px; /* Increase the height */
+            margin-right: 10px; /* Add spacing between checkbox and label */
+        }
+        .form-check-label {
+            font-size: 18px; /* Increase label font size */
+        }
+        .interests-container {
+            position: relative;
+            width: 100%;
+        }
+        .interests-options {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            z-index: 10;
+        }
+        .interests-container:hover .interests-options {
+            display: block;
+        }
+        .form-check {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="home.html">BeMyCompany</a>
+    </div>
+</nav>
+<!-- Main Content -->
+<div class="main-content">
+    <div class="form-container">
+        <h2>Beneficiary Registration</h2>
+        <form method="post" action="/BeMyCompany/beneficiaryProfile.html">
+            <div class="mb-3">
+                <input type="text" class="form-control" id="firstname" placeholder="First Name" required>
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" id="lastname" placeholder="Last Name" required>
+            </div>
+            <div class="mb-3">
+                <input type="number" class="form-control" id="age" placeholder="Age" required>
+            </div>
+            <div class="mb-3">
+                <input type="tel" class="form-control" id="phone" placeholder="Phone Number" required>
+            </div>
+            <div class="mb-3">
+                <input type="email" class="form-control" id="email" placeholder="Email" required>
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" id="location" placeholder="Location" required>
+            </div>
+            <div class="mb-3">
+                <div class="interests-container">
+                    <input type="text" class="form-control" id="interestsField" placeholder="Select Your Interests" readonly>
+                    <div class="interests-options">
+                        <div class="form-check">
+                            <input class="form-check-input interest-checkbox" type="checkbox" value="Football" id="interestFootball">
+                            <label class="form-check-label" for="interestFootball">Football</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input interest-checkbox" type="checkbox" value="Cinema" id="interestCinema">
+                            <label class="form-check-label" for="interestCinema">Cinema</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input interest-checkbox" type="checkbox" value="Domino" id="interestDomino">
+                            <label class="form-check-label" for="interestDomino">Domino</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input interest-checkbox" type="checkbox" value="Crochet" id="interestCrochet">
+                            <label class="form-check-label" for="interestCrochet">Crochet</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input interest-checkbox" type="checkbox" value="Cooking" id="interestCooking">
+                            <label class="form-check-label" for="interestCooking">Cooking</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <button type="submit" class="btn-submit">Submit</button>
+        </form>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>  // JavaScript to update the interests field dynamically
+const checkboxes = document.querySelectorAll('.interest-checkbox');
+const interestsField = document.getElementById('interestsField');
+
+checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', () => {
+        const selectedInterests = Array.from(checkboxes)
+            .filter(cb => cb.checked)
+            .map(cb => cb.value)
+            .join(', ');
+        interestsField.value = selectedInterests;
+    });
+});
+</script>
+</body>
+</html>

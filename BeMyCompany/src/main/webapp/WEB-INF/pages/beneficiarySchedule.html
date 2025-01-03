@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule New Activity</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <style>
+        /* Apply the form page styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://i.ibb.co/nLP799c/BG-3-enhanced.png');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        /* Navigation Bar Styling */
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        nav .navbar-brand {
+            color: #fff;
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-left: 10px;
+        }
+        nav a {
+            color: #fff;
+            margin-right: 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+        nav .navbar-brand:hover {
+            color: #12BD48;
+        }
+        nav a:hover {
+            color: #12BD48;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .schedule-form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 60px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .schedule-form h2 {
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #333;
+            text-align: center;
+        }
+        .form-control {
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            width: 100%;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: #12BD48;
+            outline: none;
+            box-shadow: 0 0 5px rgba(18, 189, 72, 0.3);
+        }
+        .form-control:hover {
+            border-color: #2AE195;
+        }
+        .btn-submit {
+            background: #12BD48;
+            color: white;
+            font-size: 18px;
+            padding: 15px 30px;
+            width: 40%;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(18, 189, 72, 0.3);
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .btn-submit:hover {
+            background: #2AE195;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(43, 201, 141, 0.4);
+        }
+        .btn-submit:focus {
+            outline: none;
+        }
+        .alert {
+            font-size: 14px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+        footer a {
+            color: #FF4081;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">BeMyCompany</a>
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="homePage.html">Home</a>
+            <a class="nav-link" href="aboutPage.html">About</a>
+            <a class="nav-link" href="https://codeforall.com" target="_blank">Contact</a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="schedule-form">
+        <h2>Schedule a New Activity</h2>
+        <form id="schedule-form">
+            <div class="mb-3">
+                <input type="text" id="datepicker" class="form-control" placeholder="Select a Date" required>
+            </div>
+            <div class="mb-3">
+                <select class="form-control" id="time" required>
+                    <option value="" disabled selected>Choose Time</option>
+                    <option value="Morning">Morning</option>
+                    <option value="Afternoon">Afternoon</option>
+                </select>
+            </div>
+            <div class="button-container">
+                <button type="submit" class="btn-submit">Save Activity</button>
+            </div>
+        </form>
+        <div class="alert alert-info" id="alert-message" style="display:none;" role="alert">
+            Please fill in both fields before submitting.
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <p>&copy; 2024 BeMyCompany. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script>
+    // Initialize Bootstrap Datepicker
+    $('#datepicker').datepicker({
+        format: 'mm/dd/yyyy',
+        autoclose: true,
+        todayHighlight: true,
+        startDate: new Date()
+    });
+    const scheduleForm = document.getElementById('schedule-form');
+    const datepicker = document.getElementById('datepicker');
+    const timeSelect = document.getElementById('time');
+    const alertMessage = document.getElementById('alert-message');
+    scheduleForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const date = datepicker.value;
+        const time = timeSelect.value;
+        if (!date || !time) {
+            alertMessage.style.display = 'block';
+            return;
+        }
+        alertMessage.style.display = 'none';
+        const selectedDate = new Date(date);
+        const weekday = selectedDate.toLocaleString('default', { weekday: 'long' });
+        const activity = {
+            date,
+            weekday,
+            time
+        };
+        const activities = JSON.parse(localStorage.getItem('scheduledActivities')) || [];
+        activities.push(activity);
+        localStorage.setItem('scheduledActivities', JSON.stringify(activities));
+        window.location.href = 'beneficiaryProfile.html';
+    });
+</script>
+</body>
+</html>

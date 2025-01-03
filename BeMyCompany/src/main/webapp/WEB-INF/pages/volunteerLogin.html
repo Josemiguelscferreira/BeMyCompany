@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="loginpage.css" rel="stylesheet" />
+    </link>
+    <style>
+        /* Global Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url("https://i.ibb.co/gtWP8my/park.jpg");
+            background-size: cover;
+            /*background: linear-gradient(135deg, #6A11CB, #2575FC);*/
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Navigation Bar Styling */
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .navbar-brand {
+            color: #fff;
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-left: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            margin-right: 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #12bd48;
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+        }
+
+        /* Form Styling */
+        .login-form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 60px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
+        }
+
+        .login-form h2 {
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #333;
+            text-align: center;
+        }
+
+        .form-control {
+            border: 2px solid #ddd;
+            /* Default light border */
+            border-radius: 50px;
+            width: 70%;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            /* Smooth transition for focus effect */
+        }
+
+        .form-control:focus {
+            border-color: #12bd48;
+            /* Highlight border color on focus */
+            outline: none;
+            box-shadow: 0 0 5px rgba(18, 189, 72, 0.3);
+            /* Subtle glow effect */
+        }
+
+        .btn-login {
+            font-size: 18px;
+            padding: 15px 30px;
+            width: 40%;
+            background: #12bd48;
+            /* Vibrant pink color */
+            color: white;
+            border: none;
+            border-radius: 50px;
+            /* Pill-shaped buttons */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(18, 189, 72, 0.3);
+            /* Soft shadow for depth */
+        }
+
+        .btn-login:hover {
+            background: #2ae195;
+            /* Darker shade on hover */
+            transform: translateY(-5px);
+            /* Slight lift effect on hover */
+            box-shadow: 0 10px 20px rgba(43, 201, 141, 0.4);
+            /* Stronger shadow on hover */
+        }
+
+        .btn-login:focus {
+            outline: none;
+        }
+
+        .form-text {
+            color: #333;
+            font-size: 14px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .form-text a {
+            color: #FF4081;
+            text-decoration: none;
+        }
+
+        .form-text a:hover {
+            color: #FF1E72;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+        footer a {
+            color: #FF4081;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="home.html">BeMyCompany</a>
+    </div>
+</nav>
+<!-- Main Content -->
+<div class="main-content">
+    <div class="login-form">
+        <h2>Volunteer Login</h2>
+        <form method="post" action="/BeMyCompany/volunteerProfile">
+            <div class="mb-3">
+                <input type="email" class="form-control" id="email" placeholder="Email" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn-login">Login</button>
+            <div class="form-text">
+                <p>Don't have an account? <a href="volunteerRegister.html">Sign up here</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <p>&copy; 2024 BeMyCompany. All rights reserved.</p>
+
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

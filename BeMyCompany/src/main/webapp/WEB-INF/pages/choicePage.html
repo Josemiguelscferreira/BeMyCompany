@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First page</title>
+    <!--buttoes grande e redondos-->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-top: 30px;
+            text-align: center;
+        }
+        div {
+            text-align: center;
+            margin-top: 160px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: lightgray;
+            color: black;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 300px;
+            height: 300px;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+        a:hover {
+            color: darkblue;
+        }
+        footer {
+            background-color: lightgray;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<!--do a html page, with two buttons one for volunteers and the othe to beneficiary-->
+<h1>Welcome to our community center!</h1>
+<div>
+    <button onclick="window.location.href='volunteer'">Volunteers</button>
+    <button onclick="window.location.href='beneficiary'">Beneficiary</button>
+</div>
+</body>
+</html>

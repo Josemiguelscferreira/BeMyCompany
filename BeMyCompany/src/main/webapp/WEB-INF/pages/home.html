@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeMyCompany</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Global Styling */
+        body {
+            background-image: url("https://i.ibb.co/4mhxkTS/BG-1-enhanced.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* Keeps the background image fixed */
+
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Navigation Bar Styling */
+        nav {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .navbar-brand {
+            color: #fff;
+            font-size: 26px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-left: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            margin-right: 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+
+        nav .navbar-brand:hover {
+            color: #12bd48;
+        }
+
+        nav a:hover {
+            color: #12bd48;
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Button Styling */
+        .btn-container button {
+            background: #12bd48;
+            /* Same as the registration form button */
+            color: white;
+            font-size: 22px;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(18, 189, 72, 0.3);
+            /* Matching shadow */
+        }
+
+        .btn-container button:hover {
+            background: #2ae195;
+            /* Hover effect matches */
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(43, 201, 141, 0.4);
+        }
+
+        .btn-container button:focus {
+            outline: none;
+        }
+
+        /* Text Styling for the main header */
+        h1 {
+            color: #fff;
+            font-size: 50px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            /* Slight text shadow */
+        }
+
+        h2 {
+            color: #fff;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+        footer a {
+            color: #FF4081;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">BeMyCompany</a>
+        <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="home.html">Home</a>
+            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link" href="contact.html" target="_blank">Contact</a>
+        </div>
+    </div>
+</nav>
+<!-- Main Content -->
+<div class="main-content">
+    <h1>Welcome to BeMyCompany</h1>
+    <h2>Select an option:</h2>
+    <div class="btn-container">
+        <button onclick="window.location.href='volunteerLogin.html'" id="volunteerBtn">Volunteer</button>
+        <button onclick="window.location.href='beneficiaryLogin.html'" id="beneficiaryBtn">Beneficiary</button>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <p>&copy; 2024 BeMyCompany. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
